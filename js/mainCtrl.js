@@ -26,7 +26,11 @@ angular.module('itunes').controller('mainCtrl', function($scope, itunesService){
   //Also note that that method should be retuning a promise, so you could use .then in this function. 
     
     //Code here
-  
+    $scope.getSongData = function(artist) {
+      $scope.songData = itunesService.getSongData(artist).then(function(response) {
+        $scope.songData=response;
+      })
+    }
 
 
 
@@ -43,7 +47,6 @@ angular.module('itunes').controller('mainCtrl', function($scope, itunesService){
 
 
   //Now that your service is doing the heavy lifting (sorting/formatting), we can now put the result of calling that method onto $scope.songData so that ng-grid will find it and populate the page.
-
 
 
 });
